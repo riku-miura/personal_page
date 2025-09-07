@@ -1,0 +1,862 @@
+/* ===========================
+   Base CSS - Design System
+   =========================== */
+
+/* CSS Variables - Design System */
+:root {
+  /* Colors - Minimal flat design */
+  --color-primary: #0066cc;
+  --color-primary-hover: #0056b3;
+  --color-text: #000000;
+  --color-text-secondary: #333333;
+  --color-text-muted: #666666;
+  --color-background: #ffffff;
+  --color-background-secondary: #f8f9fa;
+  --color-border: #e0e0e0;
+  --color-focus: #0066cc;
+
+  /* Typography Scale - Modular Scale (1.25) */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  /* Line Heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.375;
+  --line-height-base: 1.6;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 2;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing System - 8pt grid */
+  --space-0: 0;
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
+  /* Layout Constraints */
+  --max-width-none: none;
+  --max-width-xs: 20rem;     /* 320px */
+  --max-width-sm: 24rem;     /* 384px */
+  --max-width-md: 28rem;     /* 448px */
+  --max-width-lg: 32rem;     /* 512px */
+  --max-width-xl: 36rem;     /* 576px */
+  --max-width-2xl: 42rem;    /* 672px */
+  --max-width-3xl: 48rem;    /* 768px */
+  --max-width-4xl: 56rem;    /* 896px */
+  --max-width-5xl: 64rem;    /* 1024px */
+  --max-width-6xl: 72rem;    /* 1152px */
+  --max-width-7xl: 80rem;    /* 1280px */
+  
+  --container-max-width: var(--max-width-6xl);
+  --container-padding: var(--space-4);
+  
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;  /* 2px */
+  --radius-md: 0.25rem;   /* 4px */
+  --radius-lg: 0.5rem;    /* 8px */
+  --radius-xl: 0.75rem;   /* 12px */
+  --radius-2xl: 1rem;     /* 16px */
+  --radius-full: 9999px;
+
+  /* Shadows - Subtle and clean */
+  --shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Animation & Transitions */
+  --ease-linear: cubic-bezier(0, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+  
+  /* Z-Index Scale */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;   /* Small screens */
+  --breakpoint-md: 768px;   /* Medium screens (tablet) */
+  --breakpoint-lg: 1024px;  /* Large screens (desktop) */
+  --breakpoint-xl: 1280px;  /* Extra large screens */
+  --breakpoint-2xl: 1536px; /* 2X large screens */
+}
+
+/* ===========================
+   Base Styles & Reset
+   =========================== */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body base styles */
+body {
+  font-family: var(--font-family-mixed);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus management */
+:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ===========================
+   Typography System
+   =========================== */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-mixed);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-4);
+}
+
+/* Paragraph styles */
+p {
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* ===========================
+   Link Styles
+   =========================== */
+
+/* Base link styles */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-200) var(--ease-out);
+}
+
+/* Hover and focus states */
+a:hover,
+a:focus {
+  color: var(--color-primary-hover);
+  transition: color var(--duration-200) var(--ease-out);
+}
+
+/* External links */
+a[rel*="external"] {
+  position: relative;
+}
+
+/* ===========================
+   Layout Foundations
+   =========================== */
+
+/* Main container */
+main {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--container-padding);
+}
+
+/* Section base styles */
+section {
+  margin-bottom: var(--space-16);
+  scroll-margin-top: 100px;
+}
+
+/* Container utility */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ===========================
+   Utility Classes
+   =========================== */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Loading placeholder */
+.loading-placeholder {
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-md);
+  animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* ===========================
+   Responsive Layout System
+   =========================== */
+
+/* Images - Responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Profile image specific styling */
+#profile img {
+  width: min(300px, 80vw);
+  height: auto;
+  border-radius: var(--radius-full);
+  margin: var(--space-6) auto 0;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--duration-300) var(--ease-out);
+}
+
+#profile img:hover {
+  transform: scale(1.05);
+}
+
+/* Projects Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first: 1 column */
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.project-item {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: box-shadow var(--duration-300) var(--ease-out);
+}
+
+.project-item:hover,
+.project-item:focus-within {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.project-item h3 {
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.project-item p {
+  margin-bottom: var(--space-6);
+  color: var(--color-text-secondary);
+}
+
+.project-links {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  min-height: 44px; /* Touch target size */
+  transition: background-color var(--duration-200) var(--ease-out);
+}
+
+.project-links a:hover,
+.project-links a:focus {
+  background: var(--color-primary-hover);
+  color: var(--color-background);
+}
+
+/* Social Links Layout */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  list-style: none;
+  margin-top: var(--space-6);
+}
+
+.social-links li {
+  flex: 1;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  min-height: 44px; /* Touch target size */
+  transition: all var(--duration-200) var(--ease-out);
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.social-links img {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+/* ===========================
+   Media Queries - Mobile First
+   =========================== */
+
+/* Small screens and up (640px+) */
+@media (min-width: 640px) {
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+
+/* Medium screens and up (768px+) - Tablet */
+@media (min-width: 768px) {
+  /* Container adjustments */
+  main {
+    padding: var(--space-12) var(--container-padding);
+  }
+  
+  section {
+    margin-bottom: var(--space-20);
+  }
+  
+  /* Projects: 2 columns on tablet */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+  
+  /* Social links: better spacing */
+  .social-links {
+    gap: var(--space-6);
+  }
+  
+  .social-links li {
+    flex: none;
+  }
+}
+
+/* Large screens and up (1024px+) - Desktop */
+@media (min-width: 1024px) {
+  /* Container adjustments */
+  main {
+    padding: var(--space-16) var(--container-padding);
+  }
+  
+  section {
+    margin-bottom: var(--space-24);
+  }
+  
+  /* Projects: 3 columns on desktop */
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  
+  /* Profile section: horizontal layout option */
+  #profile {
+    text-align: center;
+    padding: var(--space-12) 0;
+  }
+  
+  /* Social links: grid layout for better organization */
+  .social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+    max-width: 800px;
+    margin: var(--space-8) auto 0;
+  }
+}
+
+/* Extra large screens (1280px+) */
+@media (min-width: 1280px) {
+  /* Even more spacing on very large screens */
+  section {
+    margin-bottom: var(--space-24);
+  }
+  
+  .projects-grid {
+    gap: var(--space-10);
+  }
+  
+  /* Enhanced profile section layout */
+  #profile {
+    padding: var(--space-16) 0;
+  }
+}
+
+/* Ultra-wide screens (1536px+) */
+@media (min-width: 1536px) {
+  main {
+    padding: var(--space-20) var(--container-padding);
+  }
+  
+  /* Constrain content width for readability */
+  .projects-grid {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .social-links {
+    max-width: 1000px;
+  }
+}
+
+/* ===========================
+   Header & Navigation Styling
+   =========================== */
+
+/* Header base styles */
+header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-50);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4);
+}
+
+/* Navigation enhanced styles */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-8);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  min-height: 44px;
+  transition: all var(--duration-200) var(--ease-out);
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--color-primary);
+  background: var(--color-background-secondary);
+  transform: translateY(-1px);
+}
+
+nav a.active {
+  color: var(--color-primary);
+  background: var(--color-background-secondary);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+}
+
+nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* ===========================
+   Footer Styling
+   =========================== */
+
+footer {
+  background: var(--color-background-secondary);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-16);
+}
+
+footer p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+footer p:last-child {
+  margin-bottom: 0;
+  font-size: var(--font-size-sm);
+}
+
+/* ===========================
+   Enhanced Interactions & Micro-animations
+   =========================== */
+
+/* Enhanced profile section interactions */
+#profile {
+  position: relative;
+}
+
+#profile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-primary-hover)
+  );
+  border-radius: var(--radius-full);
+  opacity: 0.8;
+}
+
+/* Enhanced project card interactions */
+.project-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left var(--duration-500) var(--ease-out);
+}
+
+.project-item:hover::before {
+  left: 100%;
+}
+
+/* Enhanced focus styles for better accessibility */
+.project-links a:focus,
+.social-links a:focus,
+nav a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+/* Smooth scroll for internal navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading animation for dynamic content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-item,
+.social-links li {
+  animation: fadeInUp var(--duration-500) var(--ease-out) forwards;
+}
+
+.project-item:nth-child(1) { animation-delay: 0ms; }
+.project-item:nth-child(2) { animation-delay: 100ms; }
+.project-item:nth-child(3) { animation-delay: 200ms; }
+.project-item:nth-child(4) { animation-delay: 300ms; }
+
+.social-links li:nth-child(1) { animation-delay: 0ms; }
+.social-links li:nth-child(2) { animation-delay: 50ms; }
+.social-links li:nth-child(3) { animation-delay: 100ms; }
+.social-links li:nth-child(4) { animation-delay: 150ms; }
+
+/* Enhanced typography with text effects */
+h1 {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--color-text),
+    var(--color-primary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (background-clip: text) {
+  h1 {
+    color: var(--color-text);
+    background: none;
+    animation: none;
+  }
+}
+
+/* Enhanced button interactions */
+.project-links a,
+.social-links a {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-links a::after,
+.social-links a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--duration-300) var(--ease-out);
+}
+
+.project-links a:hover::after,
+.social-links a:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Staggered animation for better UX */
+@media (prefers-reduced-motion: no-preference) {
+  section {
+    opacity: 0;
+    animation: fadeInUp var(--duration-700) var(--ease-out) forwards;
+  }
+  
+  #profile { animation-delay: 100ms; }
+  #projects { animation-delay: 200ms; }
+  #social { animation-delay: 300ms; }
+}
+
+/* Navigation Responsive Enhancements */
+@media (max-width: 767px) {
+  header {
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  nav ul {
+    gap: var(--space-3);
+  }
+  
+  nav a {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ===========================
+   Performance & Accessibility
+   =========================== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .loading-placeholder {
+    animation: none;
+  }
+  
+  #profile img:hover {
+    transform: none;
+  }
+  
+  .project-item:hover,
+  .project-item:focus-within {
+    transform: none;
+  }
+  
+  .social-links a:hover,
+  .social-links a:focus {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000000;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  .project-item {
+    border-width: 2px;
+  }
+  
+  .social-links a {
+    border-width: 2px;
+  }
+}
+
+/* Dark mode preparation (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  /* CSS variables will be overridden here in future */
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  header,
+  footer,
+  .social-links {
+    display: none;
+  }
+  
+  main {
+    max-width: none;
+    padding: 0;
+  }
+  
+  .project-item {
+    border: 1px solid #000;
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  a:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}

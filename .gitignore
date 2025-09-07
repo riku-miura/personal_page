@@ -11,6 +11,11 @@ dist/
 build/
 out/
 
+# Vite specific
+dist-ssr/
+*.local
+.vite/
+
 # Environment variables
 .env
 .env.local
@@ -88,6 +93,20 @@ dist-ssr/
 
 # AWS specific
 .aws/
+
+# Claude Code settings (contains sensitive information)
+.claude/
+
+# Temporary files created during deployment
+/tmp/
+*.tmp
+
+# AWS specific identifiers and configurations
+**/cloudfront-config.json
+**/bucket-policy.json
+**/dns-validation*.json
+**/current-distribution.json
+**/updated-distribution.json
 
 # Python specific (if used)
 __pycache__/

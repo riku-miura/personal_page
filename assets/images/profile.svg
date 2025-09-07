@@ -1,0 +1,16 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="150" cy="150" r="150" fill="#f8f9fa"/>
+  
+  <!-- Person icon in minimal style -->
+  <g fill="#666666">
+    <!-- Head -->
+    <circle cx="150" cy="110" r="35"/>
+    
+    <!-- Body -->
+    <path d="M150 155 C125 155 105 175 105 200 L105 245 L195 245 L195 200 C195 175 175 155 150 155 Z"/>
+  </g>
+  
+  <!-- Subtle border -->
+  <circle cx="150" cy="150" r="149" fill="none" stroke="#e0e0e0" stroke-width="2"/>
+</svg>

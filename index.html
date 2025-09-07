@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="三浦陸のプロフィールサイト。エンジニア採用担当 / AIエンジニアとしての業務、技術記事、SNS情報をご紹介します。">
+  <meta name="keywords" content="三浦陸,Riku Miura,エンジニア採用,AIエンジニア,Java,TypeScript,Python,Rust,GCP,AWS">
+  <meta name="author" content="Riku Miura">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Riku Miura - Profile">
+  <meta property="og:description" content="三浦陸のプロフィールサイト。エンジニア採用担当 / AIエンジニアとしての業務、技術記事、SNS情報をご紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rikumiura.com">
+  <meta property="og:image" content="https://rikumiura.com/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="Riku Miura - Profile">
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Riku Miura - Profile">
+  <meta name="twitter:description" content="三浦陸のプロフィールサイト。エンジニア採用担当 / AIエンジニアとしての業務、技術記事、SNS情報をご紹介します。">
+  <meta name="twitter:image" content="https://rikumiura.com/assets/images/og-image.jpg">
+  <meta name="twitter:site" content="@riku_miura00">
+  <meta name="twitter:creator" content="@riku_miura00">
+  
+  <title>Riku Miura - Profile | 三浦陸のプロフィールサイト</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rikumiura.com">
+  
+  <!-- Language alternatives -->
+  <link rel="alternate" hreflang="ja" href="https://rikumiura.com">
+  <link rel="alternate" hreflang="x-default" href="https://rikumiura.com">
+  
+  <!-- DNS prefetch & preconnect -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/src/css/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/src/css/fonts.css"></noscript>
+  
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "三浦陸",
+    "alternateName": "Riku Miura", 
+    "jobTitle": "Web Developer",
+    "description": "フロントエンドを中心とした開発を行うWebデベロッパー",
+    "url": "https://rikumiura.com",
+    "image": "https://rikumiura.com/assets/images/profile.jpg",
+    "sameAs": [
+      "https://github.com/riku-miura",
+      "https://note.com/riku_miura",
+      "https://zenn.dev/riku_miura", 
+      "https://twitter.com/riku_miura"
+    ],
+    "knowsAbout": [
+      "Web Development",
+      "Frontend Development",
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "HTML",
+      "CSS"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "フリーランス"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP"
+    }
+  }
+  </script>
+  
+  <!-- Critical CSS - Above the fold only -->
+  <style>
+    /* Skip link */
+    .skip-link{
+      position:absolute;
+      top:-40px;
+      left:6px;
+      background:#0066cc;
+      color:#fff;
+      padding:8px;
+      text-decoration:none;
+      transition:top 0.3s;
+      z-index:1000
+    }
+    .skip-link:focus{top:6px}
+    
+    /* Header & Navigation - Critical */
+    header{
+      padding:1rem;
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      position:sticky;
+      top:0;
+      z-index:100
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:2rem;
+      justify-content:center;
+      flex-wrap:wrap
+    }
+    nav a{
+      text-decoration:none;
+      color:#000;
+      font-weight:500;
+      padding:0.5rem 1rem;
+      border-radius:4px;
+      transition:all 0.2s ease
+    }
+    nav a:hover,nav a:focus{
+      color:#0066cc;
+      background:#f8f9fa
+    }
+    
+    /* Profile section critical styles */
+    #profile{text-align:center;padding:2rem 0}
+    #profile img{
+      width:min(300px,80vw);
+      height:auto;
+      border-radius:50%;
+      margin-top:2rem;
+      box-shadow:0 4px 20px rgba(0,0,0,0.1)
+    }
+    
+    /* Responsive - Critical only */
+    @media (max-width:768px){
+      nav ul{gap:1rem}
+    }
+  </style>
+  
+  <!-- Load main CSS -->
+  <link rel="stylesheet" href="/src/css/normalize.css">
+  <link rel="stylesheet" href="/src/css/fonts.css">
+  <link rel="stylesheet" href="/src/css/style.css">
+</head>
+<body>
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-link">メインコンテンツにスキップ</a>
+  
+  <header role="banner">
+    <nav role="navigation" aria-label="メインナビゲーション">
+      <ul role="list">
+        <li role="listitem">
+          <a href="#profile" aria-describedby="nav-profile">
+            プロフィール
+            <span id="nav-profile" class="sr-only">三浦陸の自己紹介セクション</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="#projects" aria-describedby="nav-projects">
+            成果物
+            <span id="nav-projects" class="sr-only">開発プロジェクト一覧セクション</span>
+          </a>
+        </li>  
+        <li role="listitem">
+          <a href="#social" aria-describedby="nav-social">
+            SNS
+            <span id="nav-social" class="sr-only">ソーシャルメディアリンクセクション</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main role="main" id="main-content">
+    <!-- プロフィールセクション -->
+    <section id="profile" aria-labelledby="profile-heading">
+      <h1 id="profile-heading">
+        <span lang="ja">三浦陸</span>
+        <span lang="en" style="display:block;font-size:0.7em;margin-top:0.5rem;font-weight:400;color:#666">(Riku Miura)</span>
+      </h1>
+      <p style="font-size:1.2rem;font-weight:500;margin-bottom:2rem">エンジニア採用担当 / AIエンジニア</p>
+      <p style="max-width:800px;margin:0 auto 2rem;line-height:1.7">
+        新卒・中途の採用を担当しています。PLとしての経験をもとに技術的な視点での人事戦略の策定や面談・面接、その他採用実務も行っています。AIエンジニアとしても、労務・人事の業務改善システムの構築をしています。
+      </p>
+      <p style="max-width:800px;margin:0 auto;color:#666;font-size:0.95rem">
+        <strong>技術スタック:</strong> Java、TypeScript、Python、Rust、GCP、AWS、Git、Docker、Kubernetes、Terraform、Claude code interpreter
+      </p>
+    </section>
+    
+    <!-- 成果物セクション -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">成果物</h2>
+      <div class="projects-grid loading-placeholder" style="min-height:200px">
+        <article class="project-item">
+          <h3>個人プロフィールサイト</h3>
+          <p>静的サイトジェネレーターを活用したレスポンシブ対応のプロフィールサイト。AWS上でのホスティング、CDN配信、SEO最適化を実装。</p>
+          <div class="project-links">
+            <a href="https://github.com/riku-miura/personal_page" rel="external noopener" aria-label="個人プロフィールサイトのGitHubリポジトリ">GitHub</a>
+          </div>
+        </article>
+        
+        <article class="project-item">
+          <h3>and more</h3>
+          <p>その他の開発プロジェクトや実装事例については、GitHubやSNSをご確認ください。</p>
+        </article>
+      </div>
+    </section>
+    
+    <!-- SNSセクション -->
+    <section id="social" aria-labelledby="social-heading">
+      <h2 id="social-heading">SNS・外部リンク</h2>
+      <ul class="social-links loading-placeholder" role="list" aria-label="ソーシャルメディアリンク一覧">
+        <li role="listitem">
+          <a href="https://note.com/riku_miura" rel="external noopener" aria-label="noteのプロフィールページ（新しいタブで開く）">
+            <img src="/assets/images/icons/note.svg" alt="note" loading="lazy" width="24" height="24" decoding="async">
+            <span>note</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="https://zenn.dev/riku_miura" rel="external noopener" aria-label="Zennのプロフィールページ（新しいタブで開く）">
+            <img src="/assets/images/icons/zenn.svg" alt="Zenn" loading="lazy" width="24" height="24" decoding="async">
+            <span>Zenn</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="https://x.com/riku_miura00" rel="external noopener" aria-label="X (Twitter)のプロフィールページ（新しいタブで開く）">
+            <img src="/assets/images/icons/twitter.svg" alt="X (Twitter)" loading="lazy" width="24" height="24" decoding="async">
+            <span>X</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="https://github.com/riku-miura" rel="external noopener" aria-label="GitHubのプロフィールページ（新しいタブで開く）">
+            <img src="/assets/images/icons/github.svg" alt="GitHub" loading="lazy" width="24" height="24" decoding="async">
+            <span>GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+  
+  <footer role="contentinfo">
+    <div style="max-width:1200px;margin:0 auto;padding:2rem;text-align:center;background:#f8f9fa">
+      <p style="margin-bottom:0.5rem;color:#666">&copy; 2024 Riku Miura. All rights reserved.</p>
+      <p style="margin-bottom:0;color:#666;font-size:0.9rem">Built with modern web technologies on AWS.</p>
+    </div>
+  </footer>
+
+  <!-- Screen reader only styles -->
+  <style>
+    .sr-only{
+      position:absolute!important;
+      width:1px!important;
+      height:1px!important;
+      padding:0!important;
+      margin:-1px!important;
+      overflow:hidden!important;
+      clip:rect(0,0,0,0)!important;
+      white-space:nowrap!important;
+      border:0!important
+    }
+  </style>
+
+  <!-- Main JavaScript -->
+  <script type="module" src="/src/js/main.js"></script>
+  
+  <!-- Non-critical CSS loader -->
+  <script>
+    !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function a(){d.addEventListener&&d.removeEventListener("load",a),d.media=r||"all"}var i=e.document,d=i.createElement("link");if(n)d.href=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;d.href=s[s.length-1].href}d.rel="stylesheet",d.addEventListener("load",a),d.media="only x",o(function(){i.head.appendChild(d)}),setTimeout(a)};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+  </script>
+</body>
+</html>

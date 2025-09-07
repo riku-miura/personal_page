@@ -1,0 +1,22 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#ffffff"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="120" fill="#0066cc"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-weight="bold" font-size="48" fill="white">Riku Miura - Profile</text>
+  
+  <!-- Main content -->
+  <text x="60" y="200" font-family="Arial, sans-serif" font-weight="bold" font-size="36" fill="#000">三浦陸</text>
+  <text x="60" y="250" font-family="Arial, sans-serif" font-size="24" fill="#666">Webデベロッパー</text>
+  <text x="60" y="320" font-family="Arial, sans-serif" font-size="18" fill="#333">フロントエンド開発を中心とした</text>
+  <text x="60" y="350" font-family="Arial, sans-serif" font-size="18" fill="#333">モダンWeb技術による開発</text>
+  
+  <!-- Profile icon -->
+  <circle cx="950" cy="350" r="120" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="4"/>
+  <circle cx="950" cy="310" r="35" fill="#666"/>
+  <path d="M950 355 C925 355 905 375 905 400 L905 445 L995 445 L995 400 C995 375 975 355 950 355 Z" fill="#666"/>
+  
+  <!-- Footer -->
+  <text x="60" y="580" font-family="Arial, sans-serif" font-size="16" fill="#999">rikumiura.com</text>
+</svg>

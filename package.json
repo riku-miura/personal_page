@@ -1,0 +1,57 @@
+{
+  "name": "riku-miura-profile",
+  "version": "1.0.0",
+  "description": "三浦陸のプロフィールサイト - 静的ウェブサイト",
+  "keywords": ["portfolio", "profile", "personal-website", "static-site"],
+  "author": {
+    "name": "Riku Miura",
+    "email": "contact@rikumiura.com",
+    "url": "https://rikumiura.com"
+  },
+  "license": "MIT",
+  "homepage": "https://rikumiura.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riku-miura/personal_page.git"
+  },
+  "scripts": {
+    "dev": "vite serve",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.html",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "format": "prettier --write \"src/**/*.{js,css,html}\"",
+    "deploy": "npm run build && aws s3 sync dist/ s3://rikumiura.com --delete && aws cloudfront create-invalidation --distribution-id EWUJ8C6O4DDEU --paths \"/*\"",
+    "validate:html": "html-validate index.html",
+    "test": "node test/all-tests.js",
+    "test:structure": "node test/structure-test.js",
+    "test:seo": "node test/seo-test.js",
+    "test:css": "node test/base-css-test.js",
+    "test:responsive": "node test/responsive-test.js",
+    "test:sections": "node test/sections-test.js",
+    "test:javascript": "node test/javascript-test.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "eslint": "^8.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "prettier": "^3.0.0",
+    "html-validate": "^8.0.0",
+    "@vitejs/plugin-legacy": "^5.0.0",
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0",
+    "terser": "^5.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
