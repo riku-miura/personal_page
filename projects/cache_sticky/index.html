@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache Sticky - Browser Cache API Demo</title>
+    <meta name="description" content="A minimal web application to visualize browser Cache API behavior through interactive sticky notes">
+    <meta name="keywords" content="cache api, browser cache, sticky notes, typescript, education">
+    <meta name="author" content="Cache Sticky">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFD700'%3E%3Cpath d='M19 3H5a2 2 0 00-2 2v10a2 2 0 002 2h4l3 3 3-3h4a2 2 0 002-2V5a2 2 0 00-2-2z'/%3E%3C/svg%3E">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="data:video/mp2t;base64,aW1wb3J0IHsgV2hpdGVib2FyZCB9IGZyb20gJ0AvY29tcG9uZW50cy9XaGl0ZWJvYXJkJzsKaW1wb3J0ICdAL3N0eWxlcy9tYWluLmNzcyc7CgpjbGFzcyBDYWNoZVN0aWNreUFwcCB7CiAgcHJpdmF0ZSB3aGl0ZWJvYXJkOiBXaGl0ZWJvYXJkOwoKICBjb25zdHJ1Y3RvcigpIHsKICAgIHRoaXMud2hpdGVib2FyZCA9IG5ldyBXaGl0ZWJvYXJkKCk7CiAgfQoKICBhc3luYyBpbml0aWFsaXplKCk6IFByb21pc2U8dm9pZD4gewogICAgdHJ5IHsKICAgICAgLy8gTW91bnQgdGhlIGFwcGxpY2F0aW9uIHRvIHRoZSBET00KICAgICAgY29uc3QgYXBwQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpOwogICAgICBpZiAoYXBwQ29udGFpbmVyKSB7CiAgICAgICAgYXBwQ29udGFpbmVyLnJlcGxhY2VXaXRoKHRoaXMud2hpdGVib2FyZC5nZXRFbGVtZW50KCkpOwogICAgICB9IGVsc2UgewogICAgICAgIGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQodGhpcy53aGl0ZWJvYXJkLmdldEVsZW1lbnQoKSk7CiAgICAgIH0KCiAgICAgIC8vIEluaXRpYWxpemUgdGhlIHdoaXRlYm9hcmQgd2l0aCBleGlzdGluZyBub3RlcwogICAgICBhd2FpdCB0aGlzLndoaXRlYm9hcmQuaW5pdGlhbGl6ZSgpOwoKICAgICAgLy8gQWRkIGdsb2JhbCBlcnJvciBoYW5kbGVyCiAgICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdlcnJvcicsIHRoaXMuaGFuZGxlR2xvYmFsRXJyb3IuYmluZCh0aGlzKSk7CiAgICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCd1bmhhbmRsZWRyZWplY3Rpb24nLCB0aGlzLmhhbmRsZVVuaGFuZGxlZFJlamVjdGlvbi5iaW5kKHRoaXMpKTsKCiAgICAgIGNvbnNvbGUubG9nKCdDYWNoZSBTdGlja3kgYXBwbGljYXRpb24gaW5pdGlhbGl6ZWQgc3VjY2Vzc2Z1bGx5Jyk7CiAgICB9IGNhdGNoIChlcnJvcikgewogICAgICBjb25zb2xlLmVycm9yKCdGYWlsZWQgdG8gaW5pdGlhbGl6ZSBhcHBsaWNhdGlvbjonLCBlcnJvcik7CiAgICAgIHRoaXMuc2hvd0ZhbGxiYWNrVUkoKTsKICAgIH0KICB9CgogIHByaXZhdGUgaGFuZGxlR2xvYmFsRXJyb3IoZXZlbnQ6IEVycm9yRXZlbnQpOiB2b2lkIHsKICAgIGNvbnNvbGUuZXJyb3IoJ0dsb2JhbCBlcnJvcjonLCBldmVudC5lcnJvcik7CiAgICB0aGlzLnNob3dFcnJvck1lc3NhZ2UoJ0FuIHVuZXhwZWN0ZWQgZXJyb3Igb2NjdXJyZWQuIFBsZWFzZSByZWZyZXNoIHRoZSBwYWdlLicpOwogIH0KCiAgcHJpdmF0ZSBoYW5kbGVVbmhhbmRsZWRSZWplY3Rpb24oZXZlbnQ6IFByb21pc2VSZWplY3Rpb25FdmVudCk6IHZvaWQgewogICAgY29uc29sZS5lcnJvcignVW5oYW5kbGVkIHByb21pc2UgcmVqZWN0aW9uOicsIGV2ZW50LnJlYXNvbik7CiAgICB0aGlzLnNob3dFcnJvck1lc3NhZ2UoJ0FuIGVycm9yIG9jY3VycmVkIHdoaWxlIHByb2Nlc3NpbmcgeW91ciByZXF1ZXN0LicpOwogIH0KCiAgcHJpdmF0ZSBzaG93RXJyb3JNZXNzYWdlKG1lc3NhZ2U6IHN0cmluZyk6IHZvaWQgewogICAgY29uc3QgZXJyb3JEaXYgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsKICAgIGVycm9yRGl2LmNsYXNzTmFtZSA9ICdnbG9iYWwtZXJyb3InOwogICAgZXJyb3JEaXYuaW5uZXJIVE1MID0gYAogICAgICA8ZGl2IGNsYXNzPSJlcnJvci1jb250ZW50Ij4KICAgICAgICA8aDI+4pqg77iPIEVycm9yPC9oMj4KICAgICAgICA8cD4ke21lc3NhZ2V9PC9wPgogICAgICAgIDxidXR0b24gb25jbGljaz0ibG9jYXRpb24ucmVsb2FkKCkiPlJlZnJlc2ggUGFnZTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgIGA7CgogICAgLy8gQWRkIHRvIHRvcCBvZiBib2R5CiAgICBkb2N1bWVudC5ib2R5Lmluc2VydEJlZm9yZShlcnJvckRpdiwgZG9jdW1lbnQuYm9keS5maXJzdENoaWxkKTsKCiAgICAvLyBSZW1vdmUgYWZ0ZXIgMTAgc2Vjb25kcwogICAgc2V0VGltZW91dCgoKSA9PiB7CiAgICAgIGlmIChlcnJvckRpdi5wYXJlbnROb2RlKSB7CiAgICAgICAgZXJyb3JEaXYucmVtb3ZlKCk7CiAgICAgIH0KICAgIH0sIDEwMDAwKTsKICB9CgogIHByaXZhdGUgc2hvd0ZhbGxiYWNrVUkoKTogdm9pZCB7CiAgICBjb25zdCBmYWxsYmFja0hUTUwgPSBgCiAgICAgIDxkaXYgaWQ9ImZhbGxiYWNrLWFwcCI+CiAgICAgICAgPGgxPkNhY2hlIFN0aWNreTwvaDE+CiAgICAgICAgPGRpdiBjbGFzcz0iZmFsbGJhY2stbWVzc2FnZSI+CiAgICAgICAgICA8aDI+4pqg77iPIEFwcGxpY2F0aW9uIGZhaWxlZCB0byBsb2FkPC9oMj4KICAgICAgICAgIDxwPlRoaXMgY291bGQgYmUgZHVlIHRvOjwvcD4KICAgICAgICAgIDx1bD4KICAgICAgICAgICAgPGxpPkphdmFTY3JpcHQgZGlzYWJsZWQgaW4geW91ciBicm93c2VyPC9saT4KICAgICAgICAgICAgPGxpPlVuc3VwcG9ydGVkIGJyb3dzZXIgdmVyc2lvbjwvbGk+CiAgICAgICAgICAgIDxsaT5OZXR3b3JrIGNvbm5lY3Rpdml0eSBpc3N1ZXM8L2xpPgogICAgICAgICAgPC91bD4KICAgICAgICAgIDxwPlBsZWFzZSB0cnk6PC9wPgogICAgICAgICAgPHVsPgogICAgICAgICAgICA8bGk+UmVmcmVzaGluZyB0aGUgcGFnZTwvbGk+CiAgICAgICAgICAgIDxsaT5FbmFibGluZyBKYXZhU2NyaXB0PC9saT4KICAgICAgICAgICAgPGxpPlVzaW5nIGEgbW9kZXJuIGJyb3dzZXIgKENocm9tZSA0MCssIEZpcmVmb3ggNDErLCBTYWZhcmkgMTEuMSspPC9saT4KICAgICAgICAgIDwvdWw+CiAgICAgICAgICA8YnV0dG9uIG9uY2xpY2s9ImxvY2F0aW9uLnJlbG9hZCgpIj5SZWZyZXNoIFBhZ2U8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICBgOwoKICAgIGRvY3VtZW50LmJvZHkuaW5uZXJIVE1MID0gZmFsbGJhY2tIVE1MOwogIH0KfQoKLy8gSW5pdGlhbGl6ZSB0aGUgYXBwbGljYXRpb24gd2hlbiBET00gaXMgcmVhZHkKYXN5bmMgZnVuY3Rpb24gaW5pdGlhbGl6ZUFwcCgpIHsKICB0cnkgewogICAgY29uc29sZS5sb2coJ1N0YXJ0aW5nIENhY2hlIFN0aWNreSBhcHBsaWNhdGlvbi4uLicpOwogICAgY29uc3QgYXBwID0gbmV3IENhY2hlU3RpY2t5QXBwKCk7CiAgICBhd2FpdCBhcHAuaW5pdGlhbGl6ZSgpOwogICAgY29uc29sZS5sb2coJ0FwcGxpY2F0aW9uIGluaXRpYWxpemVkIHN1Y2Nlc3NmdWxseScpOwogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICBjb25zb2xlLmVycm9yKCdGYWlsZWQgdG8gaW5pdGlhbGl6ZSBhcHBsaWNhdGlvbjonLCBlcnJvcik7CiAgICAvLyBTaG93IGZhbGxiYWNrIFVJCiAgICBkb2N1bWVudC5ib2R5LmlubmVySFRNTCA9IGAKICAgICAgPGRpdiBpZD0iZmFsbGJhY2stYXBwIj4KICAgICAgICA8aDE+Q2FjaGUgU3RpY2t5PC9oMT4KICAgICAgICA8ZGl2IGNsYXNzPSJmYWxsYmFjay1tZXNzYWdlIj4KICAgICAgICAgIDxoMj7imqDvuI8gQXBwbGljYXRpb24gZmFpbGVkIHRvIGxvYWQ8L2gyPgogICAgICAgICAgPHA+RXJyb3I6ICR7ZXJyb3IgaW5zdGFuY2VvZiBFcnJvciA/IGVycm9yLm1lc3NhZ2UgOiAnVW5rbm93biBlcnJvcid9PC9wPgogICAgICAgICAgPGJ1dHRvbiBvbmNsaWNrPSJsb2NhdGlvbi5yZWxvYWQoKSI+UmVmcmVzaCBQYWdlPC9idXR0b24+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgYDsKICB9Cn0KCmlmIChkb2N1bWVudC5yZWFkeVN0YXRlID09PSAnbG9hZGluZycpIHsKICAvLyBET00gbm90IHJlYWR5IHlldCwgd2FpdCBmb3IgaXQKICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdET01Db250ZW50TG9hZGVkJywgaW5pdGlhbGl6ZUFwcCk7Cn0gZWxzZSB7CiAgLy8gRE9NIGFscmVhZHkgcmVhZHkKICBpbml0aWFsaXplQXBwKCk7Cn0=" as="script" crossorigin>
+
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <!-- CSP for security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <script type="module" crossorigin src="/assets/index-66ddd138.js"></script>
+  <link rel="stylesheet" href="/assets/index-f0d5e483.css">
+</head>
+<body>
+    <!-- Loading state -->
+    <div id="loading">
+        <div class="loading-content">
+            <h1>📝 Cache Sticky</h1>
+            <p>Loading application...</p>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Main application container -->
+    <div id="app">
+        <!-- Application will be mounted here -->
+    </div>
+
+    <!-- Fallback for no JavaScript -->
+    <noscript>
+        <div class="noscript-message">
+            <h1>📝 Cache Sticky</h1>
+            <h2>JavaScript Required</h2>
+            <p>This application requires JavaScript to demonstrate the Cache API.</p>
+            <p>Please enable JavaScript in your browser and refresh the page.</p>
+
+            <h3>Browser Compatibility</h3>
+            <ul>
+                <li>Chrome 40+ ✅</li>
+                <li>Firefox 41+ ✅</li>
+                <li>Safari 11.1+ ✅</li>
+                <li>Edge 79+ ✅</li>
+            </ul>
+
+            <h3>What is Cache API?</h3>
+            <p>The Cache API is a browser feature that allows web applications to store network requests and responses for offline use and performance optimization.</p>
+        </div>
+    </noscript>
+
+    <!-- Application script -->
+    
+
+    <!-- Remove loading screen once app loads -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Remove loading screen after a short delay to allow app to initialize
+            setTimeout(() => {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.style.opacity = '0';
+                    setTimeout(() => loading.remove(), 300);
+                }
+            }, 1000);
+        });
+    </script>
+
+    <!-- Basic inline styles for loading and fallback -->
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-content h1 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #FFD700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .noscript-message {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .noscript-message h1 {
+            color: #FFD700;
+            text-align: center;
+        }
+
+        .noscript-message ul {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+    </style>
+</body>
+</html>
