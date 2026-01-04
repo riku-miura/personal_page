@@ -79,7 +79,6 @@ next-env.d.ts
 
 # Gatsby specific
 .cache/
-public/
 
 # Vue.js specific
 dist-ssr/
